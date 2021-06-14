@@ -18,8 +18,8 @@
             </LineChart>
             <Button layoutX="29.0" layoutY="42.0" mnemonicParsing="false" onAction="#startmaal" text="Start" />
             <Button layoutX="29.0" layoutY="75.0" mnemonicParsing="false" onAction="#stopmaal" text="Stop" />
-            <TextField layoutX="822.0" layoutY="42.0" text="Indtast CPR" />
-            <Button layoutX="763.0" layoutY="42.0" mnemonicParsing="false" onAction="#setCPR" text="Gem" />
+            <TextField fx:id="CPR" layoutX="822.0" layoutY="42.0" promptText="Indtast CPR" />
+            <Button layoutX="763.0" layoutY="42.0" mnemonicParsing="false" onAction="#gemCPR" text="Gem" />
          </children>
       </AnchorPane>
    </children>

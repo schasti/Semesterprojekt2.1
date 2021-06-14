@@ -14,6 +14,7 @@ public class Plot {
     public static Plot getPlotOBJ(){return plotOBJ;}
 
     String vali;
+    String CPR="";
 
 
     XYChart.Series<String, Number> ekg = new XYChart.Series<>();
@@ -51,4 +52,23 @@ public class Plot {
         allertStage.initModality(Modality.APPLICATION_MODAL);
         allertStage.show();
     }
+    public Boolean CPRCheck(String string) {
+        if (string != "" && string.length() == 10) {
+            try {
+                int checkforbogstaver = Integer.parseInt(string);
+                return true;
+            } catch (NumberFormatException e) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public void setCPR(String CPR){
+        this.CPR=CPR;
+    }
+    public String getCPR(){
+        return CPR;
+    }
+
 }
