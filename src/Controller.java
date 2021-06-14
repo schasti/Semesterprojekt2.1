@@ -1,13 +1,20 @@
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 
+import java.awt.*;
+
 public class Controller {
     @FXML
     LineChart ekgplot;
+    @FXML
+    TextField CPR;
+
+
+
 
     public void startmaal() {
-        SQL.getSqlOBJ().makeConnectionSQL();
 
+        SQL.getSqlOBJ().makeConnectionSQL();
        Sensor.getSensorOBJ().open();
         Sensor.getSensorOBJ().maal();
         Filter.getFilterOBJ().filtrering(Filter.getFilterOBJ().maaling1);
@@ -19,6 +26,12 @@ public class Controller {
 
     public void stopmaal() {
         //Threadhandler.getThreadhandlerOBJ().stoprunning();
+    }
+    public void setCPR(String CPR) {
+        this.CPR.setText(CPR);
+    }
+    public TextField getCPR() {
+        return CPR;
     }
 }
 
