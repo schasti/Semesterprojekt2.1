@@ -8,6 +8,7 @@ public class Sensor {
 
 
     private SerialPort sensor = new SerialPort("COM4");
+    boolean isportclosed = true;
 
     public void open(){
         try {
@@ -39,6 +40,13 @@ public class Sensor {
         } catch (SerialPortException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setIsportclosed(boolean isportclosed){
+        this.isportclosed=isportclosed;
+    }
+    public boolean getIsportclosed(){
+        return isportclosed;
     }
 
 }

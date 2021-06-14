@@ -23,14 +23,14 @@ public class Plot {
         ekgplot.getData().clear();
         ekg.getData().clear();
         ekg.setName("EKG");
-        ekgplot.getData().add(ekg);
     }
 
     public void plotdata(LineChart ekgplot, int[] ekgarray){
         ekgplot.getData().clear();
         for (int i = 0; i < (ekgarray.length - 1); i++) {
-            ekg.getData().add(new XYChart.Data<>(vali, ekgarray[i]));
+            ekg.getData().add(new XYChart.Data(i, ekgarray[i]));
         }
+        System.out.println("Done med at plotte");
     }
 
     public void textBox(String message) {

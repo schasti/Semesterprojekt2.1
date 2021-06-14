@@ -11,6 +11,7 @@ public class Filter {
     int[] maaling2 = new int[3125];  //5 sekunders målinger
     String[] raaData;
     String buffer = "";
+    boolean AorB;
 
     public void filtrering(int[] maaling) {
         while (tal1 < 3125) {
@@ -53,4 +54,7 @@ public class Filter {
     }
     public int[] getMaaling1(){return maaling1;}
     public int[] getMaaling2() {return maaling2;}
+
+    public void setAorB(boolean AorB){this.AorB=AorB;}
+    public boolean getAorB(){return AorB;}
 }
