@@ -7,13 +7,17 @@ public class Plot {
     private static Plot plotOBJ = new Plot();
     public static Plot getPlotOBJ(){return plotOBJ;}
 
-    XYChart.Series ekg = new XYChart.Series<>();
+    String vali;
+
+
+    XYChart.Series<String, Number> ekg = new XYChart.Series<>();
 
     public void plotdata(LineChart ekgplot, int[] ekgarray){
         ekgplot.getData().clear();
         for (int i = 0; i < (ekgarray.length - 1); i++) {
-            ekg.getData().add(new XYChart.Data<>(i, ekgarray[i]));
-            ekgplot.getData().add(ekg);
-        }
+            vali = String.valueOf(i);
+            ekg.getData().add(new XYChart.Data<>(vali, ekgarray[i]));
+
+        }ekgplot.getData().add(ekg);
     }
 }

@@ -5,16 +5,20 @@ public class Controller {
     @FXML
     LineChart ekgplot;
 
-    public void startmaal(){
-
-        Sensor.getSensorOBJ().open();
-        Sensor.getSensorOBJ().maal();
-        Filter.getFilterOBJ().filtrering();
+    public void startmaal() {
         SQL.getSqlOBJ().makeConnectionSQL();
+
+       Sensor.getSensorOBJ().open();
+        Sensor.getSensorOBJ().maal();
+        Filter.getFilterOBJ().filtrering(Filter.getFilterOBJ().maaling1);
         SQL.getSqlOBJ().writetoDB(Filter.getFilterOBJ().getMaaling1());
-        //Plot.getPlotOBJ().plotdata(ekgplot,Filter.getFilterOBJ().maaling1);
-            }
-
-
+        Plot.getPlotOBJ().plotdata(ekgplot,Filter.getFilterOBJ().maaling1);
+        //Threadhandler.getThreadhandlerOBJ().run();
     }
+
+
+    public void stopmaal() {
+        //Threadhandler.getThreadhandlerOBJ().stoprunning();
+    }
+}
 

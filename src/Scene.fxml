@@ -12,7 +12,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600" prefWidth="1000">
                      <children>
-                        <LineChart fx:id="ekgplot" animated="false" layoutY="171.0" prefHeight="400.0" prefWidth="984.0">
+                        <LineChart fx:id="ekgplot" animated="false" createSymbols="false" layoutY="171.0" prefHeight="400.0" prefWidth="984.0">
                           <xAxis>
                             <CategoryAxis side="BOTTOM" />
                           </xAxis>
@@ -21,7 +21,7 @@
                           </yAxis>
                         </LineChart>
                         <Button layoutX="29.0" layoutY="42.0" mnemonicParsing="false" onAction="#startmaal" text="Start" />
-                        <Button layoutX="29.0" layoutY="75.0" mnemonicParsing="false" text="Stop" />
+                        <Button layoutX="29.0" layoutY="75.0" mnemonicParsing="false" onAction="#stopmaal" text="Stop" />
                      </children></AnchorPane>
             </content>
           </Tab>
