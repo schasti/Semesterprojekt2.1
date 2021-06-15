@@ -8,11 +8,11 @@ public class Threads {
     private Threads(){}
     public static Threads getThreadsOBJ(){return threadsOBJ;}
     public boolean shouldIRun;
-    private Object lock = new Object();
+
 
     public void maalThread() {
         while (true) {
-            synchronized (lock) {
+            synchronized (this) {
                 Threads.getThreadsOBJ().setShouldIRun(true);
                 if (Sensor.getSensorOBJ().getIsportclosed()) {
                     SQL.getSqlOBJ().makeConnectionSQL();
@@ -26,7 +26,7 @@ public class Threads {
                     Filter.getFilterOBJ().filtrering(Filter.getFilterOBJ().getMaaling2());
                     Filter.getFilterOBJ().setAorB(true);
                 }
-                lock.notifyAll();
+                notifyAll();
                 System.out.println("have notified");
                 if (Threads.getThreadsOBJ().getShouldIRun()==false) {
                     break;
@@ -36,10 +36,10 @@ public class Threads {
     }
     public void plotThread(){
         while(true){
-            synchronized (lock) {
+            synchronized (this) {
                 try {
                     System.out.println("tråd plot er begyndt....");
-                   lock.wait();
+                    wait();
                     System.out.println("tråd plot kører videre....");
                     Plot.getPlotOBJ().clearData();
                     if (Filter.getFilterOBJ().getAorB()) {
@@ -55,10 +55,10 @@ public class Threads {
     }
     public void sendDataThread(){
         while(true) {
-            synchronized (lock) {
+            synchronized (this) {
                 try {
                     System.out.println("tråd senddata er begyndt.....");
-                    lock.wait();
+                    wait();
                     System.out.println("tråd senddata kører videre...");
                     if (Filter.getFilterOBJ().getAorB()) {
                         SQL.getSqlOBJ().writetoDB(Filter.getFilterOBJ().getMaaling1());

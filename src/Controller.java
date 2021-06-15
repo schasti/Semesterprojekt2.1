@@ -10,6 +10,10 @@ public class Controller {
     @FXML
     TextField CPR;
 
+    public Controller(){
+        //CPR.setText("1111111111");
+    }
+
 
     public void startmaal() {
         if(Plot.getPlotOBJ().CPRCheck(Plot.getPlotOBJ().getCPR())) {

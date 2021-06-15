@@ -7,16 +7,19 @@ public class Threadhandler extends Thread  {
     public static Threadhandler getThreadhandlerOBJ(){return threadhandlerOBJ; }
 
     Thread maal = new Thread(new Runnable() {
+        @Override
         public void run() {
             Threads.getThreadsOBJ().maalThread();
         }
     });
     Thread plot = new Thread(new Runnable() {
+        @Override
         public void run() {
             Threads.getThreadsOBJ().plotThread();
         }
     });
     Thread send = new Thread(new Runnable() {
+        @Override
         public void run() {
             Threads.getThreadsOBJ().sendDataThread();
         }
