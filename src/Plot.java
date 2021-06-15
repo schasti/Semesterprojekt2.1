@@ -19,14 +19,13 @@ public class Plot {
 
     XYChart.Series<String, Number> ekg = new XYChart.Series<>();
 
-    public void clearData(LineChart ekgplot){
-        ekgplot.getData().clear();
+    public void clearData(){
         ekg.getData().clear();
         ekg.setName("EKG");
     }
 
-    public void plotdata(LineChart ekgplot, int[] ekgarray){
-        ekgplot.getData().clear();
+    public void plotdata(int[] ekgarray){
+        ekg.getData().clear();
         for (int i = 0; i < (ekgarray.length - 1); i++) {
             ekg.getData().add(new XYChart.Data(i, ekgarray[i]));
         }
