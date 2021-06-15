@@ -9,7 +9,7 @@ public class Threads {
     public static Threads getThreadsOBJ(){return threadsOBJ;}
     public boolean shouldIRun;
     private Object lock = new Object();
-
+/*
     public void maalThread() {
         while (true) {
             synchronized (lock) {
@@ -75,6 +75,8 @@ public class Threads {
         }
 
     }
+
+ */
     public void setShouldIRun(boolean shouldIRun){
         this.shouldIRun=shouldIRun;
     }

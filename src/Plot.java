@@ -13,23 +13,44 @@ public class Plot {
     private static Plot plotOBJ = new Plot();
     public static Plot getPlotOBJ(){return plotOBJ;}
 
-    String vali;
     String CPR="";
 
 
     XYChart.Series<String, Number> ekg = new XYChart.Series<>();
 
-    public void clearData(){
+    public void setupChart(LineChart lineChart) {
         ekg.getData().clear();
-        ekg.setName("EKG");
+        lineChart.getData().clear();
+        ekg.setName("ECG");
+        lineChart.getData().add(ekg);
     }
 
-    public void plotdata(int[] ekgarray){
+    //Metode til at udfylde LineChart i intervaller, sletter gamle værdier og tilføjer nye
+    public void populateChart(int[] array) {
         ekg.getData().clear();
-        for (int i = 0; i < (ekgarray.length - 1); i++) {
-            ekg.getData().add(new XYChart.Data(i, ekgarray[i]));
+        for (int i = 0; i < (array.length - 1); i++) {
+            ekg.getData().add(new XYChart.Data(i, array[i]));
         }
-        System.out.println("Done med at plotte");
+    }
+
+
+    public Boolean CPRCheck(String string) {
+        if (string != "" && string.length() == 10) {
+            try {
+                int checkforbogstaver = Integer.parseInt(string);
+                return true;
+            } catch (NumberFormatException e) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public void setCPR(String CPR){
+        this.CPR=CPR;
+    }
+    public String getCPR(){
+        return CPR;
     }
 
     public void textBox(String message) {
@@ -51,23 +72,4 @@ public class Plot {
         allertStage.initModality(Modality.APPLICATION_MODAL);
         allertStage.show();
     }
-    public Boolean CPRCheck(String string) {
-        if (string != "" && string.length() == 10) {
-            try {
-                int checkforbogstaver = Integer.parseInt(string);
-                return true;
-            } catch (NumberFormatException e) {
-                return false;
-            }
-        }
-        return false;
-    }
-
-    public void setCPR(String CPR){
-        this.CPR=CPR;
-    }
-    public String getCPR(){
-        return CPR;
-    }
-
 }

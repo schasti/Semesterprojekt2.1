@@ -13,7 +13,7 @@ public class Controller {
 
     public void startmaal() {
         if(Plot.getPlotOBJ().CPRCheck(Plot.getPlotOBJ().getCPR())) {
-        Threadhandler.getThreadhandlerOBJ().startThread();
+        Threadhandler.getThreadhandlerOBJ().makeNewThreadIfClosed(Threadhandler.getThreadhandlerOBJ().getMainThread());
         }
         else{
             Plot.getPlotOBJ().textBox("Forkert CPR");
