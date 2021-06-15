@@ -12,7 +12,13 @@ public class Controller {
 
 
     public void startmaal() {
-        Threadhandler.getThreadhandlerOBJ().setShouldIRun(true);
+        if(Plot.getPlotOBJ().CPRCheck(Plot.getPlotOBJ().getCPR())) {
+        Threadhandler.getThreadhandlerOBJ().startThread();
+        }
+        else{
+            Plot.getPlotOBJ().textBox("Forkert CPR");
+        }
+       /* Threadhandler.getThreadhandlerOBJ().setShouldIRun(true);
         if(Plot.getPlotOBJ().CPRCheck(Plot.getPlotOBJ().getCPR())) {
             while (Threadhandler.getThreadhandlerOBJ().getShouldIRun()) {
 
@@ -43,15 +49,16 @@ public class Controller {
         else{
             Plot.getPlotOBJ().textBox("Indtast korrekt CPR");
         }
-        //Threadhandler.getThreadhandlerOBJ().run();
+        //Threadhandler.getThreadhandlerOBJ().run();*/
     }
 
 
     public void stopmaal() {
-        Threadhandler.getThreadhandlerOBJ().setShouldIRun(false);
+      Threads.getThreadsOBJ().setShouldIRun(false);/*
         Sensor.getSensorOBJ().close();
         SQL.getSqlOBJ().removeConnectionSQL();
-        Sensor.getSensorOBJ().setIsportclosed(true);
+        Sensor.getSensorOBJ().setIsportclosed(true);*/
+
     }
     public void gemCPR(){
        if(Plot.getPlotOBJ().CPRCheck(getCPR().getText())) {

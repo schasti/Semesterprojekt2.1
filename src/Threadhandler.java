@@ -6,6 +6,28 @@ public class Threadhandler extends Thread  {
     private Threadhandler(){}
     public static Threadhandler getThreadhandlerOBJ(){return threadhandlerOBJ; }
 
+    Thread maal = new Thread(new Runnable() {
+        public void run() {
+            Threads.getThreadsOBJ().maalThread();
+        }
+    });
+    Thread plot = new Thread(new Runnable() {
+        public void run() {
+            Threads.getThreadsOBJ().plotThread();
+        }
+    });
+    Thread send = new Thread(new Runnable() {
+        public void run() {
+            Threads.getThreadsOBJ().sendDataThread();
+        }
+    });
+
+    public void startThread(){
+        maal.start();
+        send.start();
+        plot.start();
+    }
+
  /*   boolean shouldIRun;
 
     public void setShouldIRun(boolean shouldIRun){
