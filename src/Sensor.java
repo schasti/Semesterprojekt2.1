@@ -8,6 +8,7 @@ public class Sensor {
 
 
     private SerialPort sensor = new SerialPort("COM4");
+    String maal="";
     boolean isportclosed = true;
 
     public void open(){
@@ -25,6 +26,7 @@ public class Sensor {
         try {
             if (sensor.getInputBufferBytesCount() > 0) {
                 return sensor.readString();
+
             } else {
                 return null;
             }

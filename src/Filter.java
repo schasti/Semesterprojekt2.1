@@ -37,6 +37,7 @@ public class Filter {
                                 if(tal1+tal2==1500){
                                     System.out.println("halvvejs");
                                 }
+
                                 try{
                                     maaling[tal1 + tal2] = Integer.parseInt(raaData[tal2]);
                                 }
