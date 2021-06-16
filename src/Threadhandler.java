@@ -6,15 +6,16 @@ import javafx.scene.chart.LineChart;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Threadhandler extends Thread  {
+public class Threadhandler  {
 
     private static Threadhandler threadhandlerOBJ = new Threadhandler();
     private Threadhandler(){}
     public static Threadhandler getThreadhandlerOBJ(){return threadhandlerOBJ; }
 
     private LineChart linechart;
+    public boolean shouldIRun;
 
-    private final ExecutorService SqlHandler = Executors.newSingleThreadExecutor();
+    private final ExecutorService SqlExecutor = Executors.newSingleThreadExecutor();
 
 
 
@@ -24,21 +25,21 @@ public class Threadhandler extends Thread  {
           //Platform.runLater(() -> Plot.getPlotOBJ().setupChart(linechart));
             Sensor.getSensorOBJ().open();
             SQL.getSqlOBJ().makeConnectionSQL();
-            Threads.getThreadsOBJ().setShouldIRun(true);
-            while (Threads.getThreadsOBJ().getShouldIRun()) {
+            Threadhandler.getThreadhandlerOBJ().setShouldIRun(true);
+            while (Threadhandler.getThreadhandlerOBJ().getShouldIRun()) {
                 if(Filter.getFilterOBJ().getAorB()) {
                     Filter.getFilterOBJ().filtrering(Filter.getFilterOBJ().getMaaling1());
                     System.out.println("Filter A");
                     Filter.getFilterOBJ().setAorB(false);
                     Platform.runLater(plotThread);
-                    getSqlHandler().execute(sqlThread);
+                    getSqlExecutor().execute(sqlThread);
                 }
                 else {
                     Filter.getFilterOBJ().filtrering(Filter.getFilterOBJ().getMaaling2());
                     System.out.println("Filter b");
                     Filter.getFilterOBJ().setAorB(true);
                     Platform.runLater(plotThread);
-                   getSqlHandler().execute(sqlThread);
+                    getSqlExecutor().execute(sqlThread);
                 }
             }
             SQL.getSqlOBJ().removeConnectionSQL();
@@ -47,12 +48,12 @@ public class Threadhandler extends Thread  {
     });
     private final Thread plotThread = new Thread(() -> {
         if (Filter.getFilterOBJ().getAorB()) {
-            Plot.getPlotOBJ().populateChart( Filter.getFilterOBJ().getMaaling1());
-            System.out.println("platform A");
+            Plot.getPlotOBJ().populateChart( linechart,Filter.getFilterOBJ().getMaaling1());
+            System.out.println("plot A");
 
         } else {
-            Plot.getPlotOBJ().populateChart(Filter.getFilterOBJ().getMaaling2());
-            System.out.println("platform B");
+            Plot.getPlotOBJ().populateChart(linechart,Filter.getFilterOBJ().getMaaling2());
+            System.out.println("plot B");
         }
        // Plot.getPlotOBJ().setupChart(linechart);
     });
@@ -73,8 +74,19 @@ public class Threadhandler extends Thread  {
     }
 
     public Thread getMainThread(){return mainThread;}
-    public ExecutorService getSqlHandler() {
-        return SqlHandler;
+    public ExecutorService getSqlExecutor() {
+        return SqlExecutor;
+    }
+
+    public void setShouldIRun(boolean shouldIRun){
+        this.shouldIRun=shouldIRun;
+    }
+    public boolean getShouldIRun(){
+        return shouldIRun;
+    }
+
+    public void setLinechart(LineChart lineChart){
+        this.linechart=lineChart;
     }
 
     /*   boolean shouldIRun;
@@ -85,6 +97,7 @@ public class Threadhandler extends Thread  {
     public boolean getShouldIRun() {
         return shouldIRun;
     }*/
+
 
 
 

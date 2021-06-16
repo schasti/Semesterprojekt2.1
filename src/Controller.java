@@ -8,24 +8,24 @@ public class Controller {
     @FXML
     LineChart<String,Number> ekgplot;
     @FXML
-    LineChart ekgplot2;
-    @FXML
     TextField CPR;
 
-    public Controller(){ }
-    private static Controller controllerOBJ = new Controller();
-    public static Controller getControllerOBJ(){return controllerOBJ;}
 
 
-    public void setEkgplot(XYChart.Series lineChart){ekgplot2.getData().add(lineChart);}
+   // public void setEkgplot(XYChart.Series lineChart){ekgplot2.getData().add(lineChart);}
 
     public void startmaal() {
+
         if(Plot.getPlotOBJ().CPRCheck(Plot.getPlotOBJ().getCPR())) {
+            //Threadhandler.getThreadhandlerOBJ().setLinechart(ekgplot);
         Threadhandler.getThreadhandlerOBJ().makeNewThreadIfClosed(Threadhandler.getThreadhandlerOBJ().getMainThread());
         }
         else{
-            Plot.getPlotOBJ().textBox("Forkert CPR");
+            Plot.getPlotOBJ().textBox("Indtast venligst CPR");
         }
+
+
+
        /* Threadhandler.getThreadhandlerOBJ().setShouldIRun(true);
         if(Plot.getPlotOBJ().CPRCheck(Plot.getPlotOBJ().getCPR())) {
             while (Threadhandler.getThreadhandlerOBJ().getShouldIRun()) {
@@ -62,12 +62,12 @@ public class Controller {
 
 
     public void stopmaal() {
-      Threads.getThreadsOBJ().setShouldIRun(false);/*
+      Threadhandler.getThreadhandlerOBJ().setShouldIRun(false);/*
         Sensor.getSensorOBJ().close();
         SQL.getSqlOBJ().removeConnectionSQL();
         Sensor.getSensorOBJ().setIsportclosed(true);*/
-
     }
+
     public void gemCPR(){
        if(Plot.getPlotOBJ().CPRCheck(getCPR().getText())) {
            Plot.getPlotOBJ().setCPR(getCPR().getText());
@@ -78,11 +78,17 @@ public class Controller {
            Plot.getPlotOBJ().textBox("Forkert CPR");
        }
     }
+
+    public void vismaal(){
+        Plot.getPlotOBJ().populateChart(getEkgplot(),Filter.getFilterOBJ().getMaaling2());
+    }
     public void setCPR(String CPR) {
         this.CPR.setText(CPR);
     }
     public TextField getCPR() {
         return CPR;
     }
+
+    public LineChart getEkgplot(){return ekgplot;}
 }
 

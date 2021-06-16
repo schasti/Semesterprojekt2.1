@@ -16,14 +16,6 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </LineChart>
-            <LineChart fx:id="ekgplot2" layoutX="173.0" layoutY="42.0" prefHeight="159.0" prefWidth="223.0">
-              <xAxis>
-                <NumberAxis side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis side="LEFT" />
-              </yAxis>
-            </LineChart>
             <Button layoutX="29.0" layoutY="42.0" mnemonicParsing="false" onAction="#startmaal" text="Start" />
             <Button layoutX="29.0" layoutY="75.0" mnemonicParsing="false" onAction="#stopmaal" text="Stop" />
             <Button layoutX="770.0" layoutY="42.0" mnemonicParsing="false" onAction="#gemCPR" text="Gem" />
