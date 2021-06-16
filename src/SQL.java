@@ -38,17 +38,16 @@ public class SQL {
         try {
             makeConnectionSQL();
             for (int i = 0; i < maaling.length-11 ; i+=10) {
-                String write = "INSERT INTO ekgmaalinger (EKG)"+
-                                                            " values(?)"+
-                                                            ",(?)"+
-                                                            ",(?)"+
-                                                            ",(?)"+
-                                                            ",(?)"+
-                                                            ",(?)"+
-                                                            ",(?)"+
-                                                            ",(?)"+
-                                                            ",(?)"+
-                                                            ",(?)";
+                String write = "INSERT INTO ekgmaalinger (EKG)"+ " values(?)"+
+                        ",(?)"+
+                        ",(?)"+
+                        ",(?)"+
+                        ",(?)"+
+                        ",(?)"+
+                        ",(?)"+
+                        ",(?)"+
+                        ",(?)"+
+                        ",(?)";
                 PreparedStatement PP = myConn.prepareStatement(write);
                 PP.setInt(1, maaling[i]);
                 PP.setInt(2, maaling[i+1]);

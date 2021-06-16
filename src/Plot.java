@@ -17,19 +17,22 @@ public class Plot {
 
 
     XYChart.Series<String, Number> ekg = new XYChart.Series<>();
+    //public LineChart<String,Number> lineChart;
 
-    public void setupChart(LineChart lineChart) {
+    public void setupChart() {
         ekg.getData().clear();
-        lineChart.getData().clear();
+      // lineChart.getData().clear();
         ekg.setName("ECG");
-        lineChart.getData().add(ekg);
+        //lineChart.getData().add(ekg);
     }
 
-    //Metode til at udfylde LineChart i intervaller, sletter gamle værdier og tilføjer nye
     public void populateChart(int[] array) {
         ekg.getData().clear();
         for (int i = 0; i < (array.length - 1); i++) {
             ekg.getData().add(new XYChart.Data(i, array[i]));
+        //    lineChart.getData().add(ekg);
+            Controller.getControllerOBJ().setEkgplot(ekg);
+
         }
     }
 

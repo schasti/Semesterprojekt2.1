@@ -1,19 +1,23 @@
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
-import javafx.scene.*;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.TextField;
 
 
 public class Controller {
     @FXML
-    LineChart ekgplot;
+    LineChart<String,Number> ekgplot;
+    @FXML
+    LineChart ekgplot2;
     @FXML
     TextField CPR;
 
-    public Controller(){
-        //CPR.setText("1111111111");
-    }
+    public Controller(){ }
+    private static Controller controllerOBJ = new Controller();
+    public static Controller getControllerOBJ(){return controllerOBJ;}
 
+
+    public void setEkgplot(XYChart.Series lineChart){ekgplot2.getData().add(lineChart);}
 
     public void startmaal() {
         if(Plot.getPlotOBJ().CPRCheck(Plot.getPlotOBJ().getCPR())) {
