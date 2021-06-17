@@ -22,7 +22,6 @@ public class Threadhandler  {
     private final Thread mainThread = new Thread(new Runnable() {
         @Override
         public void run() {
-          //Platform.runLater(() -> Plot.getPlotOBJ().setupChart(linechart));
             Sensor.getSensorOBJ().open();
             SQL.getSqlOBJ().makeConnectionSQL();
             Threadhandler.getThreadhandlerOBJ().setShouldIRun(true);
@@ -88,6 +87,7 @@ public class Threadhandler  {
     public void setLinechart(LineChart lineChart){
         this.linechart=lineChart;
     }
+    public LineChart getLinechart(){return linechart;}
 
     /*   boolean shouldIRun;
 

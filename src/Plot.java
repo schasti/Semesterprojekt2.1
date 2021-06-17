@@ -17,13 +17,12 @@ public class Plot {
 
 
     XYChart.Series<String, Number> ekg = new XYChart.Series<>();
-    //public LineChart<String,Number> lineChart;
 
-    public void setupChart() {
+    public void setupChart(LineChart lineChart) {
         ekg.getData().clear();
-      // lineChart.getData().clear();
+        lineChart.getData().clear();
         ekg.setName("ECG");
-        //lineChart.getData().add(ekg);
+        lineChart.getData().add(ekg);
     }
 
     public void populateChart(LineChart lineChart,int[] array) {
@@ -31,7 +30,7 @@ public class Plot {
         for (int i = 0; i < (array.length - 1); i++) {
             ekg.getData().add(new XYChart.Data(i, array[i]));
         }
-            lineChart.getData().add(ekg);
+           // lineChart.getData().add(ekg);
             //Controller.getControllerOBJ().setEkgplot(ekg);
     }
 

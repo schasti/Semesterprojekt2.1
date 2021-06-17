@@ -17,7 +17,8 @@ public class Controller {
     public void startmaal() {
 
         if(Plot.getPlotOBJ().CPRCheck(Plot.getPlotOBJ().getCPR())) {
-            //Threadhandler.getThreadhandlerOBJ().setLinechart(ekgplot);
+            Threadhandler.getThreadhandlerOBJ().setLinechart(ekgplot);
+            Plot.getPlotOBJ().setupChart(ekgplot);
         Threadhandler.getThreadhandlerOBJ().makeNewThreadIfClosed(Threadhandler.getThreadhandlerOBJ().getMainThread());
         }
         else{
@@ -62,7 +63,8 @@ public class Controller {
 
 
     public void stopmaal() {
-      Threadhandler.getThreadhandlerOBJ().setShouldIRun(false);/*
+      Threadhandler.getThreadhandlerOBJ().setShouldIRun(false);
+      /*
         Sensor.getSensorOBJ().close();
         SQL.getSqlOBJ().removeConnectionSQL();
         Sensor.getSensorOBJ().setIsportclosed(true);*/
@@ -89,6 +91,7 @@ public class Controller {
         return CPR;
     }
 
+    public void setEkgplot(XYChart.Series lineChart){ekgplot.getData().add(lineChart);}
     public LineChart getEkgplot(){return ekgplot;}
 }
 
