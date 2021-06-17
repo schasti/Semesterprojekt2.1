@@ -29,9 +29,9 @@ public class Plot {
         ekg.getData().clear();
         for (int i = 0; i < (array.length - 1); i++) {
             ekg.getData().add(new XYChart.Data(i, array[i]));
+
         }
-           // lineChart.getData().add(ekg);
-            //Controller.getControllerOBJ().setEkgplot(ekg);
+
     }
 
 

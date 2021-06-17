@@ -38,27 +38,38 @@ public class SQL {
         try {
             makeConnectionSQL();
             for (int i = 0; i < maaling.length-11 ; i+=10) {
-                String write = "INSERT INTO ekgmaalinger (EKG)"+ " values(?)"+
-                        ",(?)"+
-                        ",(?)"+
-                        ",(?)"+
-                        ",(?)"+
-                        ",(?)"+
-                        ",(?)"+
-                        ",(?)"+
-                        ",(?)"+
-                        ",(?)";
+                String write = "INSERT INTO ekgmaalinger (EKG,CPR)"+ " values(?,?)"+
+                        ",(?,?)"+
+                        ",(?,?)"+
+                        ",(?,?)"+
+                        ",(?,?)"+
+                        ",(?,?)"+
+                        ",(?,?)"+
+                        ",(?,?)"+
+                        ",(?,?)"+
+                        ",(?,?)";
                 PreparedStatement PP = myConn.prepareStatement(write);
                 PP.setInt(1, maaling[i]);
-                PP.setInt(2, maaling[i+1]);
-                PP.setInt(3, maaling[i+2]);
-                PP.setInt(4, maaling[i+3]);
-                PP.setInt(5, maaling[i+4]);
-                PP.setInt(6, maaling[i+5]);
-                PP.setInt(7, maaling[i+6]);
-                PP.setInt(8, maaling[i+7]);
-                PP.setInt(9, maaling[i+8]);
-                PP.setInt(10, maaling[i+9]);
+                PP.setString(2,Plot.getPlotOBJ().getCPR());
+                PP.setInt(3, maaling[i+1]);
+                PP.setString(4,Plot.getPlotOBJ().getCPR());
+                PP.setInt(5, maaling[i+2]);
+                PP.setString(6,Plot.getPlotOBJ().getCPR());
+                PP.setInt(7, maaling[i+3]);
+                PP.setString(8,Plot.getPlotOBJ().getCPR());
+                PP.setInt(9, maaling[i+4]);
+                PP.setString(10, Plot.getPlotOBJ().getCPR());
+                PP.setInt(11, maaling[i+5]);
+                PP.setString(12,Plot.getPlotOBJ().getCPR());
+                PP.setInt(13, maaling[i+6]);
+                PP.setString(14,Plot.getPlotOBJ().getCPR());
+                PP.setInt(15, maaling[i+7]);
+                PP.setString(16,Plot.getPlotOBJ().getCPR());
+                PP.setInt(17, maaling[i+8]);
+                PP.setString(18,Plot.getPlotOBJ().getCPR());
+                PP.setInt(19, maaling[i+9]);
+                PP.setString(20,Plot.getPlotOBJ().getCPR());
+
 
                 PP.execute();
             }

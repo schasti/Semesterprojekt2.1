@@ -7,9 +7,7 @@ public class Sensor {
     public static Sensor getSensorOBJ(){return sensorOBJ;}
 
 
-    private SerialPort sensor = new SerialPort("COM4");
-    String maal="";
-    boolean isportclosed = true;
+    private SerialPort sensor = new SerialPort("COM5");
 
     public void open(){
         try {
@@ -36,19 +34,13 @@ public class Sensor {
        return null;
     }
 
+
     public void close() {
         try {
             sensor.closePort();
         } catch (SerialPortException e) {
             e.printStackTrace();
         }
-    }
-
-    public void setIsportclosed(boolean isportclosed){
-        this.isportclosed=isportclosed;
-    }
-    public boolean getIsportclosed(){
-        return isportclosed;
     }
 
 }

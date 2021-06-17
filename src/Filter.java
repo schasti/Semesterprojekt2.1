@@ -51,7 +51,11 @@ public class Filter {
                 }
             }
         } tal1=0;
-        //Threadhandler.getThreadhandlerOBJ().latch.countDown();
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
     public int[] getMaaling1(){return maaling1;}
     public int[] getMaaling2() {return maaling2;}
