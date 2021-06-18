@@ -10,6 +10,8 @@ public class Controller {
     @FXML
     LineChart<String,Number> ekgplot;
     @FXML
+    LineChart<String,Number> ekgplot2;
+    @FXML
     TextField CPR;
 
 

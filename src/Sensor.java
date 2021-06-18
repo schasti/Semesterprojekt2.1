@@ -7,7 +7,7 @@ public class Sensor {
     public static Sensor getSensorOBJ(){return sensorOBJ;}
 
 
-    private SerialPort sensor = new SerialPort("COM5");
+    private SerialPort sensor = new SerialPort("COM4");
 
     public void open(){
         try {
