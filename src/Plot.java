@@ -7,6 +7,8 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+
 public class Plot {
 
     public Plot() { }
@@ -16,22 +18,28 @@ public class Plot {
     String CPR="";
 
 
-    XYChart.Series<String, Number> ekg = new XYChart.Series<>();
+    XYChart.Series<Number, Number> ekg = new XYChart.Series<>();
+    XYChart.Series<Number, Number> ekggemt = new XYChart.Series<>();
 
-    public void setupChart(LineChart lineChart) {
-        ekg.getData().clear();
+    public void setupChart(LineChart lineChart, XYChart.Series<Number, Number> serie) {
+        serie.getData().clear();
         lineChart.getData().clear();
-        ekg.setName("ECG");
-        lineChart.getData().add(ekg);
+        serie.setName("ECG");
+        lineChart.getData().add(serie);
     }
 
     public void populateChart(LineChart lineChart,int[] array) {
         ekg.getData().clear();
         for (int i = 0; i < (array.length - 1); i++) {
             ekg.getData().add(new XYChart.Data(i, array[i]));
-
         }
+    }
 
+    public void populateChartArraylist(ArrayList<Integer> arraylist){
+        ekggemt.getData().clear();
+        for (int i = 0; i < (arraylist.size()-1); i++) {
+            ekggemt.getData().add(new XYChart.Data(i, arraylist.get(i)));
+        }
     }
 
 

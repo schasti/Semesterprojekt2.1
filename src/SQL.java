@@ -14,6 +14,8 @@ public class SQL {
     static String password = "1234";
     static Connection myConn;
     static Statement myStatement;
+    ArrayList<Integer> DArrayList = new ArrayList<>();
+
 
     public void makeConnectionSQL(){
         try {
@@ -29,6 +31,26 @@ public class SQL {
             if (!myConn.isClosed()){
                 myConn.close();
             }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void readfromDB(String CPR){
+        try {
+        int counter = 0;
+        makeConnectionSQL();
+        String query = "SELECT * FROM ekgmaalinger" +
+                " WHERE CPR=" + CPR + ";";
+        ResultSet resultSet = myStatement.executeQuery(query);
+        while (resultSet.next()) {
+            DArrayList.add(counter,resultSet.getInt(2));
+            counter++;
+        }
+        for (int s = 0; s<DArrayList.size();s++){
+            System.out.println(DArrayList.get(s));
+        }
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -80,5 +102,6 @@ public class SQL {
         }
         System.out.println("Done med at sende data");
     }
+
 }
 

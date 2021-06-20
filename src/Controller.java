@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
@@ -13,6 +14,9 @@ public class Controller {
     LineChart<String,Number> ekgplot2;
     @FXML
     TextField CPR;
+    @FXML
+    TextField CPR2;
+
 
 
 
@@ -21,7 +25,7 @@ public class Controller {
 
         if(Plot.getPlotOBJ().CPRCheck(Plot.getPlotOBJ().getCPR())) {
             Threadhandler.getThreadhandlerOBJ().setLinechart(ekgplot);
-            Plot.getPlotOBJ().setupChart(ekgplot);
+            Plot.getPlotOBJ().setupChart(ekgplot,Plot.getPlotOBJ().ekg);
         Threadhandler.getThreadhandlerOBJ().makeNewThreadIfClosed(Threadhandler.getThreadhandlerOBJ().getMainThread());
         }
         else{
@@ -29,6 +33,13 @@ public class Controller {
         }
     }
 
+    public void visMaal(){
+        String CPRstring = CPR2.getText();
+        System.out.println(CPRstring);
+        SQL.getSqlOBJ().readfromDB(CPRstring);
+        Plot.getPlotOBJ().setupChart(ekgplot2,Plot.getPlotOBJ().ekggemt);
+        Plot.getPlotOBJ().populateChartArraylist(SQL.getSqlOBJ().DArrayList);
+    }
 
     public void stopmaal() {
       Threadhandler.getThreadhandlerOBJ().setShouldIRun(false);
