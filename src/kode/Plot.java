@@ -1,3 +1,5 @@
+package kode;
+
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
@@ -11,11 +13,16 @@ import java.util.ArrayList;
 
 public class Plot {
 
-    public Plot() { }
-    private static Plot plotOBJ = new Plot();
-    public static Plot getPlotOBJ(){return plotOBJ;}
+    public Plot() {
+    }
 
-    String CPR="";
+    private static Plot plotOBJ = new Plot();
+
+    public static Plot getPlotOBJ() {
+        return plotOBJ;
+    }
+
+    String CPR = "";
 
 
     XYChart.Series<Number, Number> ekg = new XYChart.Series<>();
@@ -28,37 +35,34 @@ public class Plot {
         lineChart.getData().add(serie);
     }
 
-    public void populateChart(LineChart lineChart,int[] array) {
+    public void populateChart(int[] array) {
         ekg.getData().clear();
         for (int i = 0; i < (array.length - 1); i++) {
             ekg.getData().add(new XYChart.Data(i, array[i]));
         }
     }
 
-    public void populateChartArraylist(ArrayList<Integer> arraylist){
+    public void populateChartArraylist(ArrayList<Integer> arraylist) {
         ekggemt.getData().clear();
-        for (int i = 0; i < (arraylist.size()-1); i++) {
+        for (int i = 0; i < (arraylist.size() - 1); i++) {
             ekggemt.getData().add(new XYChart.Data(i, arraylist.get(i)));
         }
     }
 
 
     public Boolean CPRCheck(String string) {
-        if (string != "" && string.length() == 10) {
-            try {
-                int checkforbogstaver = Integer.parseInt(string);
-                return true;
-            } catch (NumberFormatException e) {
-                return false;
-            }
+        if (string != "" && string.length() == 10 && string.matches("[0-9]+")) {
+            return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
-    public void setCPR(String CPR){
-        this.CPR=CPR;
+    public void setCPR(String CPR) {
+        this.CPR = CPR;
     }
-    public String getCPR(){
+
+    public String getCPR() {
         return CPR;
     }
 

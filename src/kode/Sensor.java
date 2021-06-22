@@ -1,3 +1,5 @@
+package kode;
+
 import jssc.*;
 
 public class Sensor {
@@ -7,7 +9,7 @@ public class Sensor {
     public static Sensor getSensorOBJ(){return sensorOBJ;}
 
 
-    private SerialPort sensor = new SerialPort("COM4");
+    private SerialPort sensor = new SerialPort("COM6");
 
     public void open(){
         try {

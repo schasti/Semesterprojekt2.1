@@ -1,3 +1,5 @@
+package kode;
+
 import javafx.application.Platform;
 import javafx.scene.chart.LineChart;
 import java.util.concurrent.ExecutorService;
@@ -46,11 +48,11 @@ public class Threadhandler  {
 
     private final Thread plotThread = new Thread(() -> {
         if (Filter.getFilterOBJ().getAorB()) {
-            Plot.getPlotOBJ().populateChart( linechart,Filter.getFilterOBJ().getMaaling1());
+            Plot.getPlotOBJ().populateChart( Filter.getFilterOBJ().getMaaling1());
             System.out.println("plot A");
         }
         else {
-            Plot.getPlotOBJ().populateChart(linechart,Filter.getFilterOBJ().getMaaling2());
+            Plot.getPlotOBJ().populateChart(Filter.getFilterOBJ().getMaaling2());
             System.out.println("plot B");
         }
     });

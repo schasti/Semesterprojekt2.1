@@ -1,3 +1,5 @@
+package kode;
+
 public class Filter {
 
     private static Filter FilterOBJ = new Filter();
@@ -50,12 +52,13 @@ public class Filter {
                     }
                 }
             }
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         } tal1=0;
-        try {
-            Thread.sleep(10);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
     }
     public int[] getMaaling1(){return maaling1;}
     public int[] getMaaling2() {return maaling2;}
