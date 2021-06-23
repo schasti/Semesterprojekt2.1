@@ -23,6 +23,7 @@ public class Threadhandler  {
 
             Sensor.getSensorOBJ().open();
             SQL.getSqlOBJ().makeConnectionSQL();
+
             Threadhandler.getThreadhandlerOBJ().setShouldIRun(true);
 
             while (Threadhandler.getThreadhandlerOBJ().getShouldIRun()) {
